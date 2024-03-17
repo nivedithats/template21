@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <div id="categories">
+
+    </div>
+
+
+    <script>
+        let categories = document.querySelector('#categories');
+   
+      
+        var productData = []
+        categories.innerHTML = `
+        <div class="loading">
+            <div class="spinner"></div>
+            </div>`
+        fetch('https://fakestoreapi.com/products')
+        .then(load=>load.json())
+        .then(data=>{
+            productData = data;
+            categories.innerHTML = ""
+            productData.map((item, index)=>{
+                
+                categories.innerHTML += `
+            <div class="categories-card">
+            
+                <img  src=${item.image} alt=${item.name}>
+                <h4> ${item.title}</h4>
+                <h4> ${item.price}</h4>
+                <h4> ${item.rating.rate}</h4>
+                
+
+
+                
+            <a href ='./i.html/${item.id}'>See more products</a>
+                </div>
+            `
+        })
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
+        console.log(productData);
+      
+    </script>
+    
+</body>
+</html>

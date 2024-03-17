@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form>
+        <input type="username" name="username">
+        <input type="email" name="email">
+        <input type="password" name="password">
+        <input type="mobile" name="mobile">
+        <button type="submit">Create Account</button>
+        <button onclick="e()">Extract Params</button>
+    </form>
+    <button onclick="register()"> register</button>
+
+
+
+
+    <script>
+      
+
+
+        function register(){
+            var name = prompt('Enter your name');
+            window.location.href = `./i.html?name=${name}&phone`
+        }
+        function e(){
+            var params = new URLSearchParams(window.location.search)
+            var name = params.get('username')
+            var email = params.get('email')
+            var password = params.get('password')
+            var mobile = params.get('mobile')
+            document.write(`<h1>name:${name}</h1>`)
+            document.write(`<h1>Email:${email}</h1>`)
+            document.write(`<h1>password:${password}</h1>`)
+            document.write(`<h1>Mobile Number:${mobile}</h1>`)
+        }
+    </script>
+    
+</body>
+</html>

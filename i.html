@@ -1,0 +1,59 @@
+productDetails: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .left, .right{
+            flex: 1;
+            min-width: 300px;
+        }
+        .left img{
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+      
+
+    </div>
+
+    <script>
+
+        var params = new URLSearchParams(window.location.search)
+
+       var id = params.get('id')
+
+        let container = document.getElementById('container');
+
+        var productData = {};
+        fetch('https://fakestoreapi.com/products/${id}')
+        .then(load=>load.json())
+        .then(data=>{
+            productData = data;
+           console.log(productData.title);
+           container.innerHTML = `
+           <div class="left">
+            <img src=${productData.image}>
+            </div>
+            <div class="right">
+                <h1>${productData.title}</h1>
+                <p>${productData.price}</p>
+            </div>
+          
+           `
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        console.log(productData)
+    </script>
+</body>
+</html>
