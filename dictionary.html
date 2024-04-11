@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+   
+    
+</head>
+<body>
+    <div id="searchInput"></div>
+
+    <script>
+      var searchinput = document.getElementById('searchInput');
+      var output = "";
+
+      var word = prompt('Enter a word to get meaning');
+
+      var acronyms  = {
+        html : 'hypertext markup language',
+        css : 'cascading stylesheet',
+        www : 'world wide web',
+    
+
+      };
+      if(acronyms[word]!=undefined){
+        word = acronyms[word];
+      }
+ 
+      output = word;
+      searchinput.innerText = output;
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
